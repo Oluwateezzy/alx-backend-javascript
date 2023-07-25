@@ -1,3 +1,4 @@
-import createEmployeesObject from './11-createEmployeesObject';
+import returnHowManyArguments from "./4-rest-parameter.js";
 
-console.log(createEmployeesObject('Software', ['Bob', 'Sylvie']));
+console.log(returnHowManyArguments("one"));
+console.log(returnHowManyArguments("one", "two", 3, "4th"));
