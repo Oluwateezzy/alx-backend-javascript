@@ -17,6 +17,8 @@ module.exports = {
   rules: {
     "no-console": "off",
     "no-shadow": "off",
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
     "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
   },
   overrides: [
