@@ -1,4 +1,11 @@
-import returnHowManyArguments from "./4-rest-parameter.js";
+import createEmployeesObject from './11-createEmployeesObject.js';
+import createReportObject from './12-createReportObject.js';
 
-console.log(returnHowManyArguments("one"));
-console.log(returnHowManyArguments("one", "two", 3, "4th"));
+const employees = {
+  ...createEmployeesObject('engineering', ['Bob', 'Jane']),
+  ...createEmployeesObject('marketing', ['Sylvie']),
+};
+
+const report = createReportObject(employees);
+console.log(report.allEmployees);
+console.log(report.getNumberOfDepartments(report.allEmployees));
