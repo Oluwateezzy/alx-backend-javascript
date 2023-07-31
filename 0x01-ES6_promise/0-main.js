@@ -1,3 +1,4 @@
-import uploadPhoto from './5-photo-reject';
+import getFullResponseFromAPI from "./1-promise";
 
-console.log(uploadPhoto('guillaume.jpg'));
+console.log(getFullResponseFromAPI(true));
+console.log(getFullResponseFromAPI(false));
