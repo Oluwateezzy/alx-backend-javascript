@@ -1,4 +1,4 @@
-import HolbertonCourse from './2-hbtn_course';
+import Currency from './3-currency';
 
-const course = new HolbertonCourse('PHP', 20, ['Lucie', 'Guillaume']);
-course.name = 10;
+const dollar = new Currency('$', 'Dollars');
+console.log(dollar.displayFullCurrency());
