@@ -1,5 +1,5 @@
 export default function cleanSet(set, startWith) {
-  if (!startWith || set.length === 0) {
+  if (!startWith || startWith.length === 0) {
     return '';
   }
   const filtered = Array.from(set).filter((value) => value.startsWith(startWith));
