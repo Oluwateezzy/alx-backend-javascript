@@ -1,9 +1,9 @@
 export default function groceriesList() {
   return new Map([
-    ['apple', 3],
-    ['banana', 5],
-    ['orange', 2],
-    ['avocado', 1],
-    ['pear', 4],
+    ['Apples', 10],
+    ['Tomatoes', 10],
+    ['Pasta', 1],
+    ['Rice', 1],
+    ['Banana', 5],
   ]);
 }
