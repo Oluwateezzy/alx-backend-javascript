@@ -1,11 +1,12 @@
-const express = require('express')
+const express = require('express');
 
-const router = require('./routes/index')
-const app = express()
+const router = require('./routes/index');
 
-app.use('/', router)
-app.use('/students', router)
-app.use('/students/:major', router)
+const app = express();
 
-app.listen(1245, () => console.log("Server is connected"))
+app.use('/', router);
+app.use('/students', router);
+app.use('/students/:major', router);
+
+app.listen(1245, () => console.log('Server is connected'));
 export default app;

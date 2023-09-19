@@ -14,22 +14,24 @@ class StudentsController {
         response.end();
       });
   }
+
   static getAllStudentsByMajor(request, response) {
-    response.statusCode = 200
-    const { major } = request.params
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/plain');
+    const { major } = request.params;
     if (major !== 'CS' && major !== 'SWE') {
-            response.statusCode = 500;
-            response.write('Major parameter must be CS or SWE\n');
-            response.end();
-            return;
+      response.statusCode = 500;
+      response.write('Major parameter must be CS or SWE\n');
+      response.end();
+      return;
     }
     readDatabase('./database.csv').then((data) => {
-        response.write(`List: ${data[major].join(', ')}\n`);
-        response.end();
+      response.write(`List: ${data[major].join(', ')}`);
+      response.end();
     }).catch(() => {
-        response.statusCode = 500
-        throw new Error("Cannot load the database")
-    })
+      response.statusCode = 500;
+      throw new Error('Cannot load the database');
+    });
   }
 }
 

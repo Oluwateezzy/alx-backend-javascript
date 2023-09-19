@@ -8,22 +8,22 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', async (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('This is the list of our students\n');
-    await countStudents(process.argv[2]).then((data) => {
-        res.write(`Number of students: ${data.lines.length - 1}\n`);
-        res.write(`Number of students in CS: ${data.csList.length}. List: ${data.csList.join(', ')}\n`);
-        res.write(`Number of students in SWE: ${data.sweList.length}. List: ${data.sweList.join(', ')}\n`);
-    }).catch((err) => res.write(err.message))
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.write('This is the list of our students\n');
+  await countStudents(process.argv[2]).then((data) => {
+    res.write(`Number of students: ${data.lines.length - 1}\n`);
+    res.write(`Number of students in CS: ${data.csList.length}. List: ${data.csList.join(', ')}\n`);
+    res.write(`Number of students in SWE: ${data.sweList.length}. List: ${data.sweList.join(', ')}\n`);
+  }).catch((err) => res.write(err.message))
     .finally(() => {
-        res.end()
-    })
-})
+      res.end();
+    });
+});
 
 const PORT = 1245;
 const hostname = '127.0.0.1';
 app.listen(PORT, () => {
-    console.log(`Server running at http://${hostname}:${PORT}`);
+  console.log(`Server running at http://${hostname}:${PORT}`);
 });
 module.exports = app;
