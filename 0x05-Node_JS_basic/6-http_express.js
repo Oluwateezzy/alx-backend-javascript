@@ -1,12 +1,14 @@
 const express = require('express');
 
 const app = express();
+const port = 1245;
 
 app.get('/', (req, res) => {
-  res.send('Hello Holberton School!\n');
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.send('Hello Holberton School!');
 });
 
-const PORT = 1245;
-app.listen(PORT);
+app.listen(port);
 
 module.exports = app;
