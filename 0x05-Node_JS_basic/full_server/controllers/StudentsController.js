@@ -6,8 +6,8 @@ class StudentsController {
     response.setHeader('Content-Type', 'text/plain');
     response.write('This is the list of our students\n');
     readDatabase('./database.csv').then((data) => {
-      response.write(`Number of students in CS: ${data['CS'].length}. List: ${data['CS'].join(', ')}\n`);
-      response.write(`Number of students in SWE: ${data['SWE'].length}. List: ${data['SWE'].join(', ')}\n`);
+      response.write(`Number of students in CS: ${data.CS.length}. List: ${data.CS.join(', ')}\n`);
+      response.write(`Number of students in SWE: ${data.SWE.length}. List: ${data.SWE.join(', ')}\n`);
       response.end();
     }).catch((err) => response.write(err.message))
       .finally(() => {
