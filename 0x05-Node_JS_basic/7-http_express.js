@@ -19,6 +19,7 @@ app.get('/students', async (req, res) => {
     res.write(`Number of students: ${data.students.length}\n`);
     res.write(`Number of students in CS: ${data.csStudents.length}. List: ${data.csStudents.join(', ')}\n`);
     res.write(`Number of students in SWE: ${data.sweStudents.length}. List: ${data.sweStudents.join(', ')}`);
+    res.end()
   }).catch((err) => res.write(err.message))
     .finally(() => {
       res.end();

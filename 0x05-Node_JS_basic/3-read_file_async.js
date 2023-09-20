@@ -7,7 +7,7 @@ async function countStudents(path) {
   } catch (error) {
     throw new Error('Cannot load the database');
   }
-  const students = data.split('\n')
+  const students = data.split('\r\n')
     .map((student) => student.split(','))
     .filter((student) => student.length === 4 && student[0] !== 'firstname')
     .map((student) => ({
