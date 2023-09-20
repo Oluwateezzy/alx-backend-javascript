@@ -26,12 +26,9 @@ class StudentsController {
       return;
     }
     readDatabase('./database.csv').then((data) => {
-      response.write(`List: ${data[major].join(', ')}`);
+      response.write(`List: ${data[major].join(', ')}\n`);
       response.end();
-    }).catch(() => {
-      response.statusCode = 500;
-      throw new Error('Cannot load the database');
-    });
+    }).catch((err) => response.send(err.message));
   }
 }
 
