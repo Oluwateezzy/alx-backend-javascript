@@ -26,7 +26,7 @@ function countStudents(path) {
   }
 
   console.log(`Number of students: ${lines.length - 1}`);
-  console.log(`Number of students in CS: ${csCount}. List: ${csList.join(', ')}`);
-  console.log(`Number of students in SWE: ${sweCount}. List: ${sweList.join(', ')}`);
+  console.log(`Number of students in CS: ${csList.length}. List: ${csList.join(', ')}`);
+  console.log(`Number of students in SWE: ${sweList.length}. List: ${sweList.join(', ')}`);
 }
 module.exports = countStudents;
