@@ -1,67 +1,86 @@
-// 1-calcul.test.js
-const assert = require('assert');
-const expect = require('chai').expect;
-const calculateNumber = require('./1-calcul');
+const { expect } = require('chai');
+const calculateNumber = require('./2-calcul_chai');
 
-describe('calculateNumber', () => {
-  describe('type SUM', () => {
-    it('should return the rounded sum of two numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', 1.4, 2.6), 4);
-      assert.strictEqual(calculateNumber('SUM', 3.3, 4.7), 8);
-    });
+describe('#calculateNumber() with type SUM', () => {
+  it('should return 4 when adding 1 and 3', () => {
+    expect(calculateNumber('SUM', 1, 3)).to.equal(4);
   });
-
-  describe('type SUBTRACT', () => {
-    it('should return the rounded subtraction of two numbers', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', 5.5, 2.2), 4);
-      assert.strictEqual(calculateNumber('SUBTRACT', 4.7, 3.3), 2);
-    });
+  it('should return 5 when adding 1 and 3.7', () => {
+    expect(calculateNumber('SUM', 1, 3.7)).to.equal(5);
   });
-
-  describe('type DIVIDE', () => {
-    it('should return the rounded division result of two numbers', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 10, 2), 5);
-      assert.strictEqual(calculateNumber('DIVIDE', 7, 3), 2.3333333333333335);
-    });
-
-    it('should return "Error" when dividing by 0', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 5, 0), 'Error');
-      assert.strictEqual(calculateNumber('DIVIDE', 8.2, 0), 'Error');
-    });
+  it('should return 5 when adding 1.2 and 3.7', () => {
+    expect(calculateNumber('SUM', 1.2, 3.7)).to.equal(5);
   });
-
-  it('should throw an error for invalid type', () => {
-    assert.throws(() => calculateNumber('INVALID', 1, 2), /Invalid type. Type must be SUM, SUBTRACT, or DIVIDE./);
+  it('should return 6 when adding 1.5 and 3.7', () => {
+    expect(calculateNumber('SUM', 1.5, 3.7)).to.equal(6);
+  });
+  it('should return 0 when adding 0.1 and 0.3', () => {
+    expect(calculateNumber('SUM', 0.1, 0.3)).to.equal(0);
+  });
+  it('should return 0 when adding -0.7 and 0.7', () => {
+    expect(calculateNumber('SUM', -0.7, 0.7)).to.equal(0);
+  });
+  it('should return -2 when adding -0.8 and -0.7', () => {
+    expect(calculateNumber('SUM', -0.8, -0.7)).to.equal(-2);
   });
 });
 
-describe('calculateNumber', () => {
-  describe('type SUM', () => {
-    it('should return the rounded sum of two numbers', () => {
-      expect(calculateNumber('SUM', 1.4, 2.6)).to.equal(4);
-      expect(calculateNumber('SUM', 3.3, 4.7)).to.equal(8);
-    });
+describe('#calculateNumber() with type SUBTRACT', () => {
+  it('should return -2 when subtracting 1 and 3', () => {
+    expect(calculateNumber('SUBTRACT', 1, 3)).to.equal(-2);
   });
-
-  describe('type SUBTRACT', () => {
-    it('should return the rounded subtraction of two numbers', () => {
-      expect(calculateNumber('SUBTRACT', 5.5, 2.2)).to.equal(4);
-      expect(calculateNumber('SUBTRACT', 4.7, 3.3)).to.equal(2);
-    });
+  it('should return -4 when subtracting 1.4 and 4.5', () => {
+    expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
   });
-  describe('type DIVIDE', () => {
-    it('should return the rounded division result of two numbers', () => {
-      expect(calculateNumber('DIVIDE', 10, 2)).to.equal(5);
-      expect(calculateNumber('DIVIDE', 7, 3)).to.be.closeTo(2.3333333333333335, 0.0001);
-    });
-
-    it('should return "Error" when dividing by 0', () => {
-      expect(calculateNumber('DIVIDE', 5, 0)).to.equal('Error');
-      expect(calculateNumber('DIVIDE', 8.2, 0)).to.equal('Error');
-    });
+  it('should return -3 when subtracting 1.2 and 3.7', () => {
+    expect(calculateNumber('SUBTRACT', 1.2, 3.7)).to.equal(-3);
   });
+  it('should return -2 when subtracting 1.5 and 3.7', () => {
+    expect(calculateNumber('SUBTRACT', 1.5, 3.7)).to.equal(-2);
+  });
+  it('should return 0 when subtracting 0.1 and 0.3', () => {
+    expect(calculateNumber('SUBTRACT', 0.1, 0.3)).to.equal(0);
+  });
+  it('should return -2 when subtracting -0.7 and 0.7', () => {
+    expect(calculateNumber('SUBTRACT', -0.7, 0.7)).to.equal(-2);
+  });
+  it('should return 0 when subtracting -0.8 and -0.7', () => {
+    expect(calculateNumber('SUBTRACT', -0.8, -0.7)).to.equal(0);
+  });
+  it('should return 1 when subtracting 0.8 and -0.4', () => {
+    expect(calculateNumber('SUBTRACT', 0.8, -0.4)).to.equal(1);
+  });
+});
 
-  it('should throw an error for invalid type', () => {
-    expect(() => calculateNumber('INVALID', 1, 2)).to.throw('Invalid type. Type must be SUM, SUBTRACT, or DIVIDE.');
+describe('#calculateNumber() with type DIVIDE', () => {
+  it('should return 0.25 when dividing 1 and 4', () => {
+    expect(calculateNumber('DIVIDE', 1, 4)).to.equal(0.25);
+  });
+  it('should return 0.25 when dividing 1 and 3.7', () => {
+    expect(calculateNumber('DIVIDE', 1, 3.7)).to.equal(0.25);
+  });
+  it('should return 0.2 when dividing 1.4 and 4.5', () => {
+    expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
+  });
+  it('should return 1 when dividing 1.6 and 2.4', () => {
+    expect(calculateNumber('DIVIDE', 1.6, 2.4)).to.equal(1);
+  });
+  it('should return 2 when dividing 4.2 and 1.5', () => {
+    expect(calculateNumber('DIVIDE', 4.2, 1.5)).to.equal(2);
+  });
+  it("should return 'Error' when dividing 1.3 and 0.3", () => {
+    expect(calculateNumber('DIVIDE', 1.3, 0.3)).to.equal('Error');
+  });
+  it('should return -1 when dividing -0.7 and 0.7', () => {
+    expect(calculateNumber('DIVIDE', -0.7, 0.7)).to.equal(-1);
+  });
+  it('should return 1 when dividing -0.8 and -0.7', () => {
+    expect(calculateNumber('DIVIDE', -0.8, -0.7)).to.equal(1);
+  });
+  it('should return -22 when dividing -44.5 and 2.4', () => {
+    expect(calculateNumber('DIVIDE', -44.5, 2.4)).to.equal(-22);
+  });
+  it('should return 22 when dividing -88.5 and -3.6', () => {
+    expect(calculateNumber('DIVIDE', -88.5, -3.6)).to.equal(22);
   });
 });
