@@ -11,6 +11,7 @@
   "devDependencies": {
     "assert": "^2.1.0",
     "chai": "^4.3.8",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "sinon": "^16.0.0"
   }
 }
